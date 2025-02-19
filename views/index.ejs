@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <div class="main min-h-screen w-full bg-amber-200">
+
+        <div class="form p-10">
+            <form action="/create" method="post" >
+                <input type="text" name="title" placeholder="Enter title"
+                    class="block px-5 py-2 bg-amber-100 m-2 rounded-md w-full outline-none" required>
+                <textarea name="details" placeholder="Write your task details" id=""
+                    class="block px-5 py-2 bg-amber-100 resize-none m-2 rounded-md w-full outline-none"></textarea>
+                <button type="submit" class="btn m-2 bg-teal-200 px-5 py-2 rounded-md">Add Note</button>
+            </form>
+            <div class="tasks flex gap-3 flex-wrap ">
+                <% if (files.length>0){ %>
+                    <% files.forEach(function(val){ %>
+                        <div class="task min-w-72 px-3 py-4 bg-amber-100 m-2 rounded-md">
+                            <h1 class="text-3xl text-stone-950 tracking-tighter ">
+                                <%= val %>
+                            </h1>
+                            <div class="flex w-full justify-between items-center mt-3">
+                            <a class="text-blue-500 inline-block" href="/files/<%= val %>">Read more..</a>
+                            <a class="text-stone-400 inline-block" href="/edit/<%= val %>">edit filename</a>
+                        </div>
+                        </div>
+                        <% }) %>
+                            <% }else{ %>
+                                <h3 class="m-2 text-amber-50">No task</h3>
+                                <% } %>
+            </div>
+        </div>
+
+
+        <!-- <h1>hello world</h1>
+    <h4>calculations</h4>
+    <p><%=3+3%></p> -->
+</body>
+
+</html>
